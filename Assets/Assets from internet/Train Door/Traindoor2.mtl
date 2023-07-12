@@ -1,0 +1,19 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 01.08.2018 16:30:19
+
+newmtl Material__211
+	Ns 70.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.9000 0.9000 0.9000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka E:\Program Files (x86)\Steam\SteamApps\common\Resident Evil 0\EXTRACTED\model\d\d0a\d0a_01_BM.dds
+	map_Kd E:\Program Files (x86)\Steam\SteamApps\common\Resident Evil 0\EXTRACTED\model\d\d0a\d0a_01_BM.dds
+	map_Ks E:\Program Files (x86)\Steam\SteamApps\common\Resident Evil 0\EXTRACTED\model\d\d0a\d0a_01_MM.dds
+	map_bump E:\Program Files (x86)\Steam\SteamApps\common\Resident Evil 0\EXTRACTED\model\d\d0a\d0a_01_NM.dds
+	bump E:\Program Files (x86)\Steam\SteamApps\common\Resident Evil 0\EXTRACTED\model\d\d0a\d0a_01_NM.dds
