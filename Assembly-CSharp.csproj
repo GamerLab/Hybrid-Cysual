@@ -61,7 +61,7 @@
     <Compile Include="Assets/Scripts/PlayerMovement.cs" />
     <Compile Include="Assets/Scripts/updateLine.cs" />
     <Compile Include="Assets/Scripts/PlatformSpawner.cs" />
-    <Compile Include="Assets/ObstaclePopulator.cs" />
+    <Compile Include="Assets/Scripts/ObstaclePopulator.cs" />
     <Compile Include="Assets/Scripts/PlatformDespawner.cs" />
     <Compile Include="Assets/Scripts/InfiniteGroundSpawner.cs" />
     <Compile Include="Assets/SimpleTurret/Scripts/Turret/RaycastHandler.cs" />
@@ -72,8 +72,8 @@
     <Compile Include="Assets/SimpleTurret/Scripts/Health.cs" />
     <Compile Include="Assets/SimpleTurret/Scripts/AutoDestruct.cs" />
     <Compile Include="Assets/SimpleTurret/Scripts/Turret/TurretController.cs" />
-    <Compile Include="Assets/GroundHolder.cs" />
-    <Compile Include="Assets/GameManager.cs" />
+    <Compile Include="Assets/Scripts/GroundHolder.cs" />
+    <Compile Include="Assets/Scripts/GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
