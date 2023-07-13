@@ -20,9 +20,15 @@ namespace LazyTurtle
         [Header("UIPanels")]
         public List<GameObject> UIPanels = new List<GameObject>();
 
-        #region Private Data
-        [SerializeField]private bool XpCount = false;
-        #endregion
+        [Space(10)]
+        [Header("Required Variable Data ")]
+
+        [SerializeField] public float InitialDoorSpawnTime;
+        [SerializeField] public float DoorSpawnDelay;
+
+        //#region Private Data
+        //[SerializeField]private bool XpCount = false;
+        //#endregion
 
         // Start is called before the first frame update
         void Start()
@@ -37,11 +43,43 @@ namespace LazyTurtle
         // Update is called once per frame
         void Update()
         {
-            if (GameManager.GMInstance.gameState != GameState.GamePause
-              || GameManager.GMInstance.gameState == GameState.GameStart
-              || GameManager.GMInstance.gameState != GameState.GameStopToPlay) {
+            
+            switch ((int)gameState)
+            {
 
-                GameHelperManager.HelperInstance.XpSlider.GetComponent<Slider>().value -= 0.01f * Time.deltaTime;
+                case 0://Objective              
+                    break;
+                case 1://GameStart
+                    if (GameHelperManager.HelperInstance.XpTicking)
+                    {
+                        GameHelperManager.HelperInstance.XpSlider.GetComponent<Slider>().value -= 0.01f * Time.deltaTime;
+                    }
+                    break;
+                case 2://GamePause
+                    break;
+                case 3://DoorSpawn
+                    ObstaclePopulator.PoolerInst.SpawnDoorsNow();
+                    if (GameHelperManager.HelperInstance.XpTicking)
+                    {
+                        GameHelperManager.HelperInstance.XpSlider.GetComponent<Slider>().value -= 0.01f * Time.deltaTime;
+                    }
+                    break;
+                case 4://TruthDoor
+                    break;
+                case 5://DareDoor
+                    break;
+                case 6://PreSuccess
+                    break;
+                case 7://PreFail
+                    break;
+                case 8://Failed
+                    break;
+                case 9://Scccess
+                    break;
+                case 10://StopToPlay
+                    break;
+
+
 
             }
         }
@@ -58,11 +96,14 @@ namespace LazyTurtle
                 case 1://GameStart
                     UIPanels[2].SetActive(true);
                     GameHelperManager.HelperInstance.XpTicking = true;
-                    Invoke("ShowXpWarning", 4.0f);
+
+                    Invoke("ShowXpWarning", 3.0f);
+                    Invoke("InvokeDoorSpawning", InitialDoorSpawnTime);
                     break;
                 case 2://GamePause
                     break;
                 case 3://DoorSpawn
+                    
                     break;
                 case 4://TruthDoor
                     break;
@@ -141,5 +182,18 @@ namespace LazyTurtle
 
         }
         #endregion
+
+        #region Helping Functions
+
+        private void InvokeDoorSpawning()
+        {
+            gameState = GameManager.GameState.DoorSpawn;
+            UpdateGameState();
+            Debug.Log("InvokeDoorSpawning");
+        }
+       
+
+        #endregion
     }
 }
+

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 
 namespace LazyTurtle
@@ -80,14 +79,16 @@ namespace LazyTurtle
                     GameHelperManager.HelperInstance.NewPositionZofSpawn = (GameHelperManager.HelperInstance.CurrentGround.transform.position.z + incrimentPos);
                     spawnPosition = new Vector3(0f, 0f, GameHelperManager.HelperInstance.NewPositionZofSpawn);
 
-                    Debug.Log("item.added at : " + spawnPosition.z.ToString()); ;
+                       //Debug.Log("item.added at : " + spawnPosition.z.ToString()); 
                     groundPrefab[i].transform.position = spawnPosition;
 
                     groundPrefab[i].gameObject.SetActive(true);
+                    GameHelperManager.HelperInstance.ActiveGroundCount++;
                     GameHelperManager.HelperInstance.CurrentGround = groundPrefab[i].gameObject;
-     
+
                     break;
                 }
+               
             }
             //foreach (GameObject item in groundPrefab)
             //{
@@ -96,7 +97,7 @@ namespace LazyTurtle
             //        Debug.Log("item.added at : " + GameHelperManager.HelperInstance.NewPositionZofSpawn);
             //        spawnPosition = new Vector3(GameHelperManager.HelperInstance.CurrentGround.transform.position.x, GameHelperManager.HelperInstance.CurrentGround.transform.position.y, GameHelperManager.HelperInstance.CurrentGround.transform.position.z + GameHelperManager.HelperInstance.NewPositionZofSpawn);
             //        item.transform.position = spawnPosition;
-                   
+
             //        item.gameObject.SetActive(true);
             //        item.transform.position = spawnPosition;
             //        GameHelperManager.HelperInstance.NewPositionZofSpawn += incrimentPos;
@@ -105,7 +106,7 @@ namespace LazyTurtle
             //        break;
             //    }
             //}
-           // GameObject newGround = Instantiate(groundPrefab, spawnPosition, Quaternion.identity);
+            // GameObject newGround = Instantiate(groundPrefab, spawnPosition, Quaternion.identity);
 
             //// Get the length of the new ground prefab based on its scale
             //Vector3 newGroundScale = newGround.transform.localScale;

@@ -1,6 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
-using static LazyTurtle.GameManager;
+
 
 namespace LazyTurtle
 {
@@ -8,10 +8,8 @@ namespace LazyTurtle
     {
         [Header("Variables")]
         [SerializeField] public float _speed = 5f;
-        public Transform[] _lanes;
         [SerializeField] public float _distToGround = 0.1f;
         [SerializeField] public Transform raycastpoint;
-
         [SerializeField] public bool _canMove = true;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] public float moveSpeed = 5f;
@@ -21,47 +19,64 @@ namespace LazyTurtle
         [SerializeField] private bool isJumping;
         [SerializeField] private float jumpForce = 5f;
         [SerializeField] private bool isGrounded;
+        [SerializeField] private bool Stop;
+
+        [Space(10)]
+        [Header("Animator")]
+        [SerializeField] private Animator PlayerAnim;
 
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody>();
         }
 
-        private void LateUpdate()
+        private void Update()
         {
-            if (GameManager.GMInstance.gameState != GameState.Objective || GameManager.GMInstance.gameState != GameState.GamePause || GameManager.GMInstance.gameState != GameState.GameStopToPlay)
-            {
+            
+            Debug.Log("GameState is : " + GameManager.GMInstance.gameState);
+            if (!GameHelperManager.HelperInstance.GameStoped && isGrounded)  {
+               
+                   // Debug.Log("Grounded is Running: " );
 
-
-                if (isGrounded)
-                {
                     float horizontalInput = Input.GetAxis("Horizontal");
                     float verticalInput = Input.GetAxis("Vertical");
 
                     Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput) * moveSpeed;
                     _rigidbody.velocity = new Vector3(movement.x, _rigidbody.velocity.y, movement.z);
 
+
+                //transform.LookAt(movement);
+
                     if (Input.GetButtonDown("Jump"))
                     {
                         Jump();
+                        PlayerAnim.SetTrigger("Jump");
                     }
+                    if (verticalInput > 0)
+                    {
+                      PlayerAnim.SetTrigger("Run");
+                    }
+                    else
+                    {
+                     PlayerAnim.SetTrigger("Walk");
+                    }
+                  
                     transform.Translate(Vector3.forward * Time.deltaTime * _speed);
-                }
+                
             }
         }
 
         private void FixedUpdate()
         {
-            if (GameManager.GMInstance.gameState != GameState.Objective || GameManager.GMInstance.gameState != GameState.GamePause || GameManager.GMInstance.gameState != GameState.GameStopToPlay)
-
+            if (!GameHelperManager.HelperInstance.GameStoped)
             {
 
-
+              //  Debug.Log("Chhheck Ground ");
                 CheckGround();
 
                 if (!isGrounded)
                 {
-                    ApplyGravity();
+                    Invoke("ApplyGravity", 2.0f);
                 }
             }
         }

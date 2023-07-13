@@ -9,6 +9,8 @@ TagManager:
   - Line3
   - Line4
   - Ground
+  - DareDoor
+  - TruthDoor
   layers:
   - Default
   - TransparentFX

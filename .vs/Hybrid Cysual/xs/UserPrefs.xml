@@ -1,20 +1,21 @@
 ﻿<Properties StartupConfiguration="{51165E09-FA22-C3AD-C06A-C365072C7AA4}|">
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerMovement.cs">
-    <Files>
-      <File FileName="Assets/updateLine.cs" Line="5" Column="2" />
-      <File FileName="Assets/GameHelperManager.cs" Line="11" Column="21" />
-      <File FileName="Assets/Scripts/PlayerMovement.cs" Line="140" Column="69" />
-      <File FileName="Assets/Scripts/InfiniteGroundSpawner.cs" Line="49" Column="83" />
-      <File FileName="Assets/Scripts/PlatformSpawner.cs" Line="15" Column="134" />
-      <File FileName="Assets/Scripts/PlatformDespawner.cs" Line="9" Column="10" />
-      <File FileName="Assets/ObstaclePopulator.cs" Line="5" Column="44" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f44d8faa-841e-4adf-90cf-d3b7ac3de288" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="3bc34952-4e66-4214-8274-6c13693096aa" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ObstaclePopulator.cs">
+    <Files>
+      <File FileName="Assets/Scripts/GameHelperManager.cs" Line="20" Column="54" IsPinned="True" />
+      <File FileName="Assets/Scripts/PlayerMovement.cs" Line="33" Column="1" IsPinned="True" />
+      <File FileName="Assets/Scripts/InfiniteGroundSpawner.cs" Line="86" Column="71" IsPinned="True" />
+      <File FileName="Assets/Scripts/updateLine.cs" Line="8" Column="38" IsPinned="True" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="30" Column="34" IsPinned="True" />
+      <File FileName="Assets/Scripts/GroundHolder.cs" Line="29" Column="23" IsPinned="True" />
+      <File FileName="Assets/Scripts/ObstaclePopulator.cs" Line="165" Column="5" IsPinned="True" />
+      <File FileName="Assets/Scripts/PlatformDespawner.cs" Line="30" Column="77" IsPinned="True" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
 </Properties>
