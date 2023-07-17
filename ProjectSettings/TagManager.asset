@@ -11,6 +11,8 @@ TagManager:
   - Ground
   - DareDoor
   - TruthDoor
+  - TruthAnswer
+  - FalseAnswer
   layers:
   - Default
   - TransparentFX

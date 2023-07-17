@@ -11,12 +11,16 @@ public class ObstaclePopulator : MonoBehaviour
     [Header("holder for Doors to pool spawn objects ")]
     [SerializeField] public List<GameObject> Doors = new List<GameObject>();
     [Space(10)]
-    [Header("holder for Truth/Dare to pool spawn objects ")]
-    [SerializeField] public List<GameObject> TruthObstacles = new List<GameObject>();
+    [Header("holder for Dare to pool spawn objects ")]
+
     [SerializeField] public List<GameObject> DareObstacles = new List<GameObject>();
 
     [Header("holder for Active Grounds  ")]
     [SerializeField] public List<GameObject> activeGrounds = new List<GameObject>();
+
+    [Space(10)]
+    [Header("holder for Truth to pool spawn objects ")]
+    [SerializeField] public List<GameObject> TrueFalseObjects = new List<GameObject>();
 
 
 
@@ -116,14 +120,19 @@ public class ObstaclePopulator : MonoBehaviour
     // dynamically placing doors 
     public void SpawnDoorsNow()
     {
-       // Debug.Log("Spawning Door :" + GameHelperManager.HelperInstance.ActiveGroundCount);
-        if (GameHelperManager.HelperInstance.ActiveGroundCount == 3 && GameHelperManager.HelperInstance.ActiveDoorCount <= 2)
+        Invoke("doorObjectPool", 2.0f);
+        // Debug.Log("Spawning Door :" + GameHelperManager.HelperInstance.ActiveGroundCount);
+       
+    }
+    void doorObjectPool()
+    {
+        if (GameHelperManager.HelperInstance.ActiveGroundCount >= 3 && GameHelperManager.HelperInstance.ActiveDoorCount <= 2)
         {
             Vector3 lastPos = new Vector3(0f, 0f, 0f);
             foreach (GameObject item in Doors)
             {
-               // Debug.Log("Spawning :" + item.name);
-                
+                // Debug.Log("Spawning :" + item.name);
+
                 Vector3 gotPos = GetRandomDoorPositionForPool();
                 while (gotPos == lastPos)
                 {
@@ -136,18 +145,57 @@ public class ObstaclePopulator : MonoBehaviour
                     item.SetActive(true);
                     GameHelperManager.HelperInstance.ActiveDoorCount++;
                     lastPos = gotPos;
-                   // Debug.Log("Spawning pos :" + item.transform.position);
+                    // Debug.Log("Spawning pos :" + item.transform.position);
                 }
-               
+
             }
         }
     }
-    
+
+    // dynamically placing doors 
+    public void SpawnTrueFalseObjectNow()
+    {
+        // Debug.Log("Spawning Door :" + GameHelperManager.HelperInstance.ActiveGroundCount);
+        Invoke("TrueFalseObject",4.0f);
+       // TrueFalseObject();
+
+
+    }
+    void TrueFalseObject()
+    {
+       
+        if (GameHelperManager.HelperInstance.ActiveGroundCount >= 2 && GameHelperManager.HelperInstance.ActiveTureFalseObjCount <= 2)
+        {
+            Vector3 lastPos = new Vector3(0f, 0f, 0f);
+            foreach (GameObject item in TrueFalseObjects)
+            {
+                // Debug.Log("Spawning :" + item.name);
+
+                Vector3 gotPos = GetRandomDoorPositionForPool();
+                while (gotPos == lastPos)
+                {
+                    gotPos = GetRandomDoorPositionForPool();
+                }
+                if (lastPos != gotPos)
+                {
+                    item.transform.position = gotPos;
+                    item.transform.parent = activeGrounds[groundToSpawn].GetComponent<GroundHolder>().linesAndPoints[randomLine].Line.transform;
+                    item.SetActive(true);
+                    GameHelperManager.HelperInstance.ActiveTureFalseObjCount++;
+                    lastPos = gotPos;
+                    // Debug.Log("Spawning pos :" + item.transform.position);
+                }
+
+            }
+        }
+    }
+
+
 
     private Vector3 GetRandomDoorPositionForPool()
     {
         
-        groundToSpawn = activeGrounds.Count - 2;
+        groundToSpawn =Random.Range( 0,activeGrounds.Count);
         randomLine = Random.Range(0,  activeGrounds[groundToSpawn].GetComponent<GroundHolder>().linesAndPoints.Count - 1);
 
        
@@ -162,6 +210,41 @@ public class ObstaclePopulator : MonoBehaviour
        // Debug.Log("randomPos : " + randomPos);
         return randomPos;
     }
+    #endregion
+
+
+
+    #region Despawner
+
+    //void PoolDisableDoor(Transform)
+    //{
+    //    foreach (Transform child in transform.parent)
+    //    {
+    //        // ...
+
+    //        if (child.CompareTag("TruthDoor") || child.CompareTag("DareDoor"))
+    //        {
+    //            Debug.Log("DisablingChildName: " + child.name);
+    //            child.transform.parent.parent = null;
+    //            GameHelperManager.HelperInstance.ActiveDoorCount--;
+
+    //            child.gameObject.SetActive(false);
+
+
+    //        }
+    //        if (child.CompareTag("TruthAnswer") || child.CompareTag("FalseAnswer"))
+    //        {
+    //            Debug.Log("DisablingChildName: " + child.name);
+    //            child.transform.parent.parent = null;
+    //            GameHelperManager.HelperInstance.ActiveTureFalseObjCount--;
+
+    //            child.gameObject.SetActive(false);
+    //            GameHelperManager.HelperInstance.ActiveGroundCount--;
+    //            this.gameObject.transform.parent.gameObject.SetActive(false);
+
+    //        }
+    //    }
+    //}
     #endregion
 }
 

@@ -1,21 +1,24 @@
 ﻿<Properties StartupConfiguration="{51165E09-FA22-C3AD-C06A-C365072C7AA4}|">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="7076ff07-c9e7-488b-bf66-6dd5efc42611" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="3bc34952-4e66-4214-8274-6c13693096aa" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ObstaclePopulator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/GameHelperManager.cs" Line="20" Column="54" IsPinned="True" />
-      <File FileName="Assets/Scripts/PlayerMovement.cs" Line="33" Column="1" IsPinned="True" />
-      <File FileName="Assets/Scripts/InfiniteGroundSpawner.cs" Line="86" Column="71" IsPinned="True" />
-      <File FileName="Assets/Scripts/updateLine.cs" Line="8" Column="38" IsPinned="True" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="30" Column="34" IsPinned="True" />
-      <File FileName="Assets/Scripts/GroundHolder.cs" Line="29" Column="23" IsPinned="True" />
-      <File FileName="Assets/Scripts/ObstaclePopulator.cs" Line="165" Column="5" IsPinned="True" />
-      <File FileName="Assets/Scripts/PlatformDespawner.cs" Line="30" Column="77" IsPinned="True" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="194" Column="44" />
+      <File FileName="Assets/Scripts/PlatformDespawner.cs" Line="24" Column="1" />
+      <File FileName="Assets/Scripts/ObstaclePopulator.cs" Line="155" Column="128" />
+      <File FileName="Assets/Scripts/GroundHolder.cs" Line="14" Column="49" />
+      <File FileName="Assets/Scripts/updateLine.cs" Line="8" Column="38" />
+      <File FileName="Assets/Scripts/InfiniteGroundSpawner.cs" Line="88" Column="1" />
+      <File FileName="Assets/Scripts/PlayerMovement.cs" Line="36" Column="1" />
+      <File FileName="Assets/Scripts/DoorController.cs" Line="45" Column="14" />
+      <File FileName="Assets/Scripts/Questions.cs" Line="33" Column="31" />
+      <File FileName="Assets/AnswerObjectHandler.cs" Line="49" Column="40" />
+      <File FileName="Assets/Scripts/GameHelperManager.cs" Line="60" Column="49" />
     </Files>
   </MonoDevelop.Ide.Workbench>
 </Properties>

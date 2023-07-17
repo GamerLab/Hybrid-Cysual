@@ -26,16 +26,17 @@ namespace LazyTurtle
 
         private void OnEnable()
         {
-            if(autoadd)
-            ObstaclePopulator.PoolerInst.activeGrounds.Add(this.gameObject);
+            if (autoadd)
+                ObstaclePopulator.PoolerInst.activeGrounds.Add(this.gameObject);
         }
         private void OnDisable()
         {
             ObstaclePopulator.PoolerInst.activeGrounds.Remove(this.gameObject);
-
-           
-
         }
+
+        
     }
+
+
 
 }

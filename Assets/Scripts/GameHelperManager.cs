@@ -7,6 +7,18 @@ using System.Collections.Generic;
 
 namespace LazyTurtle
 {
+    [System.Serializable]
+    public class QuestionAnswers
+    {
+        [Header("holder for Questions")]
+        [SerializeField] public string Question;
+        [Header("holder for TrueAnswer")]
+        [SerializeField] public string TrueAnswer;
+        [Header("holder for Answer1")]
+        [SerializeField] public string Answer1;
+        [Header("holder for Answer2")]
+        [SerializeField] public string Answer2;
+    }
     public class GameHelperManager : MonoBehaviour
     {
         public static GameHelperManager HelperInstance;
@@ -19,6 +31,10 @@ namespace LazyTurtle
         [SerializeField] public bool GameStoped = true;
         [SerializeField] public int ActiveGroundCount = 0;
         [SerializeField] public int ActiveDoorCount = 0;
+        [SerializeField] public int ActiveTureFalseObjCount = 1;
+        [SerializeField] public int ActiveQuestionCount = 1;
+        [SerializeField] public int dummyCount = 0;
+
 
 
 
@@ -37,6 +53,16 @@ namespace LazyTurtle
         [SerializeField] public  String XpDeductNotificationtext = "Get To The Door XP Is Ticking Down !";
 
 
+        [Space(10)]
+        [Header("Questions")]
+        [SerializeField] public List<QuestionAnswers> questionAnswersList = new List<QuestionAnswers>();
+        [SerializeField] public GameObject QuestionsUi;
+        [SerializeField] public TextMeshProUGUI QuestionText;
+        [SerializeField] public TextMeshProUGUI Answer1Text;
+        [SerializeField] public TextMeshProUGUI Answer2Text;
+        [SerializeField] public String AnswerTrueNotificationtext = "Amazing Its Wright Answer !";
+        [SerializeField] public String AnswerFalseNotificationtext = "Oops The Right Answer is : !";
+
 
 
 
@@ -49,7 +75,7 @@ namespace LazyTurtle
             if(HelperInstance == null){
                 HelperInstance = this;
             }
-         
+       
         }
 
         // Update is called once per frame

@@ -25,7 +25,7 @@ namespace LazyTurtle
 
         [SerializeField] public float InitialDoorSpawnTime;
         [SerializeField] public float DoorSpawnDelay;
-
+        [SerializeField] public int CurrentLevel;
         //#region Private Data
         //[SerializeField]private bool XpCount = false;
         //#endregion
@@ -35,7 +35,7 @@ namespace LazyTurtle
         {
             GMInstance = this;
             gameState = GameState.Objective;
-         
+            CurrentLevel =UnityEngine.Random.Range(4, 10);
             //PlayerPrefs.SetInt("gameState", (int)gameState);
             UpdateGameState();
         }
@@ -52,21 +52,35 @@ namespace LazyTurtle
                 case 1://GameStart
                     if (GameHelperManager.HelperInstance.XpTicking)
                     {
+                        Debug.Log("GameStart");
                         GameHelperManager.HelperInstance.XpSlider.GetComponent<Slider>().value -= 0.01f * Time.deltaTime;
                     }
                     break;
                 case 2://GamePause
                     break;
                 case 3://DoorSpawn
-                    ObstaclePopulator.PoolerInst.SpawnDoorsNow();
+                    Debug.Log("DoorSpawn");
+                   
                     if (GameHelperManager.HelperInstance.XpTicking)
                     {
                         GameHelperManager.HelperInstance.XpSlider.GetComponent<Slider>().value -= 0.01f * Time.deltaTime;
                     }
                     break;
                 case 4://TruthDoor
+                    Debug.Log("TruthDoor");
+                    
+                    if (GameHelperManager.HelperInstance.XpTicking)
+                    {
+                        GameHelperManager.HelperInstance.XpSlider.GetComponent<Slider>().value -= 0.01f * Time.deltaTime;
+                    }
                     break;
                 case 5://DareDoor
+                    Debug.Log("DareDoor");
+                   
+                    if (GameHelperManager.HelperInstance.XpTicking)
+                    {
+                        GameHelperManager.HelperInstance.XpSlider.GetComponent<Slider>().value -= 0.01f * Time.deltaTime;
+                    }
                     break;
                 case 6://PreSuccess
                     break;
@@ -103,11 +117,15 @@ namespace LazyTurtle
                 case 2://GamePause
                     break;
                 case 3://DoorSpawn
-                    
+                    ObstaclePopulator.PoolerInst.SpawnDoorsNow();
                     break;
                 case 4://TruthDoor
+                    Invoke("ShowQuestion", 1.0f);
+                    ObstaclePopulator.PoolerInst.SpawnTrueFalseObjectNow();
                     break;
                 case 5://DareDoor
+                    GameManager.GMInstance.gameState = GameState.DoorSpawn;
+                    GameManager.GMInstance.UpdateGameState();
                     break;
                 case 6://PreSuccess
                     break;
@@ -162,6 +180,7 @@ namespace LazyTurtle
             StartCoroutine(ShowNotification(GameHelperManager.HelperInstance.XpDeductNotificationtext, 3.0f));
         }
 
+       
         #endregion
 
         #region Notification
@@ -173,7 +192,7 @@ namespace LazyTurtle
             yield return new WaitForSeconds(offTime);
 
             DisableNotification();
-
+            StopCoroutine("ShowNotification");
         }
         public void DisableNotification()
         {
@@ -191,9 +210,56 @@ namespace LazyTurtle
             UpdateGameState();
             Debug.Log("InvokeDoorSpawning");
         }
-       
+
 
         #endregion
+
+        #region Question Answer
+
+        public void ShowQuestion()
+        {
+            //GameHelperManager.HelperInstance.ActiveQuestionCount = PlayerPrefs.GetInt("ActiveQuestionCount");
+            //if (GameHelperManager.HelperInstance.ActiveQuestionCount >= GameHelperManager.HelperInstance.questionAnswersList.Count)
+            //{
+            //    GameHelperManager.HelperInstance.ActiveQuestionCount = 0;
+            //}
+            GameHelperManager.HelperInstance.ActiveQuestionCount = UnityEngine.Random.Range(0, GameHelperManager.HelperInstance.questionAnswersList.Count);
+            PlayerPrefs.SetInt("ActiveQuestionCount", GameHelperManager.HelperInstance.ActiveQuestionCount);
+
+            GameHelperManager.HelperInstance.QuestionText.text
+                = GameHelperManager.HelperInstance.questionAnswersList[GameHelperManager.HelperInstance.ActiveQuestionCount].Question;
+            GameHelperManager.HelperInstance.Answer1Text.text
+                = GameHelperManager.HelperInstance.questionAnswersList[GameHelperManager.HelperInstance.ActiveQuestionCount].Answer1;
+            GameHelperManager.HelperInstance.Answer2Text.text
+                = GameHelperManager.HelperInstance.questionAnswersList[GameHelperManager.HelperInstance.ActiveQuestionCount].Answer2;
+            GameHelperManager.HelperInstance.QuestionsUi.SetActive(true);
+
+        }
+        bool textMatched = false;
+      
+
+
+        
+        public void DisableQuestion()
+        {
+            //GameHelperManager.HelperInstance.ActiveQuestionCount++;
+            //PlayerPrefs.SetInt("ActiveQuestionCount", GameHelperManager.HelperInstance.ActiveQuestionCount);
+  
+            GameHelperManager.HelperInstance.dummyCount++;
+
+            //GameHelperManager.HelperInstance.QuestionText.text
+            //= ' '.ToString();
+            //GameHelperManager.HelperInstance.Answer1Text.text
+            //= ' '.ToString();
+            //GameHelperManager.HelperInstance.Answer2Text.text
+            //= ' '.ToString();
+            GameHelperManager.HelperInstance.QuestionsUi.SetActive(false);
+        }
+
+
+        #endregion
+
+     
     }
 }
 
