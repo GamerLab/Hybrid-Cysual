@@ -72,12 +72,12 @@
     <Compile Include="Assets/Scripts/PlayerMovement.cs" />
     <Compile Include="Assets/Scripts/updateLine.cs" />
     <Compile Include="Assets/Scripts/PlatformSpawner.cs" />
-    <Compile Include="Assets/AnswerObjectHandler.cs" />
+    <Compile Include="Assets/Scripts/AnswerObjectHandler.cs" />
     <Compile Include="Assets/Scripts/ObstaclePopulator.cs" />
     <Compile Include="Assets/Assets from internet/Particle System Color Changer/Example/Scripts/PS_ExampleRandomColorChange.cs" />
     <Compile Include="Assets/Scripts/GroundHolder.cs" />
     <Compile Include="Assets/Assets from internet/Particle Ribbon by Moonflower Carnivore/Scripts/randomParticleRotation.cs" />
-    <Compile Include="Assets/LevelEndPreSuccess.cs" />
+    <Compile Include="Assets/Scripts/LevelEndPreSuccess.cs" />
     <Compile Include="Assets/Scripts/DoorController.cs" />
     <Compile Include="Assets/Scripts/PlatformDespawner.cs" />
     <Compile Include="Assets/Assets from internet/Particle System Color Changer/Scripts/PS_ColorChanger.cs" />
@@ -102,8 +102,8 @@
     <Compile Include="Assets/Assets from internet/VolumetricLines/Scripts/VolumetricLineStripBehavior.cs" />
     <Compile Include="Assets/Assets from internet/VolumetricLines/Scripts/VolumetricLineVertexData.cs" />
     <Compile Include="Assets/Assets from internet/VolumetricLines/BuiltInRenderPipeline/ExampleScenes/ExampleScripts/CreateSinShapedLineStrip.cs" />
-    <Compile Include="Assets/enableObjectHandler.cs" />
-    <Compile Include="Assets/DeathScene.cs" />
+    <Compile Include="Assets/Scripts/enableObjectHandler.cs" />
+    <Compile Include="Assets/Scripts/DeathScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
