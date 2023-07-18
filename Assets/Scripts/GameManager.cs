@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 namespace LazyTurtle
 {
@@ -26,6 +27,7 @@ namespace LazyTurtle
         [SerializeField] public float InitialDoorSpawnTime;
         [SerializeField] public float DoorSpawnDelay;
         [SerializeField] public int CurrentLevel;
+        [SerializeField] public bool isdead = false;
         //#region Private Data
         //[SerializeField]private bool XpCount = false;
         //#endregion
@@ -34,10 +36,13 @@ namespace LazyTurtle
         void Start()
         {
             GMInstance = this;
+            isdead = false;
             gameState = GameState.Objective;
             CurrentLevel =UnityEngine.Random.Range(4, 10);
+
             //PlayerPrefs.SetInt("gameState", (int)gameState);
             UpdateGameState();
+            
         }
 
         // Update is called once per frame
@@ -52,14 +57,14 @@ namespace LazyTurtle
                 case 1://GameStart
                     if (GameHelperManager.HelperInstance.XpTicking)
                     {
-                        Debug.Log("GameStart");
+                      //  Debug.Log("GameStart");
                         GameHelperManager.HelperInstance.XpSlider.GetComponent<Slider>().value -= 0.01f * Time.deltaTime;
                     }
                     break;
                 case 2://GamePause
                     break;
                 case 3://DoorSpawn
-                    Debug.Log("DoorSpawn");
+                  //  Debug.Log("DoorSpawn");
                    
                     if (GameHelperManager.HelperInstance.XpTicking)
                     {
@@ -67,7 +72,7 @@ namespace LazyTurtle
                     }
                     break;
                 case 4://TruthDoor
-                    Debug.Log("TruthDoor");
+                  //  Debug.Log("TruthDoor");
                     
                     if (GameHelperManager.HelperInstance.XpTicking)
                     {
@@ -75,7 +80,7 @@ namespace LazyTurtle
                     }
                     break;
                 case 5://DareDoor
-                    Debug.Log("DareDoor");
+                 //   Debug.Log("DareDoor");
                    
                     if (GameHelperManager.HelperInstance.XpTicking)
                     {
@@ -96,6 +101,15 @@ namespace LazyTurtle
 
 
             }
+
+            if (GameHelperManager.HelperInstance.XpSlider.GetComponent<Slider>().value <= 0f && !isdead)
+            {
+                isdead = true;
+                GameHelperManager.HelperInstance.XpTicking = false;
+                gameState = GameState.PreFail;
+                UpdateGameState();
+            }
+
         }
 
         #region GameMAinLogic
@@ -128,12 +142,25 @@ namespace LazyTurtle
                     GameManager.GMInstance.UpdateGameState();
                     break;
                 case 6://PreSuccess
+                    foreach (var item in UIPanels)
+                    {
+                        item.SetActive(false);
+                    }
+                    GameHelperManager.HelperInstance.CompeteCelibration.SetActive(true);
+                    Invoke("GoCompleted", 5.0f);
                     break;
                 case 7://PreFail
+                    foreach (var item in UIPanels)
+                    {
+                        item.SetActive(false);
+                    }
+                    GameHelperManager.HelperInstance.deathScene.SetActive(true);
                     break;
                 case 8://Failed
+                    ShowFailedPannel();
                     break;
                 case 9://Scccess
+                    ShowCompletedPannel();
                     break;
                 case 10://StopToPlay
                     StartCoroutine(startNoCounter());
@@ -177,7 +204,30 @@ namespace LazyTurtle
 
         public void ShowXpWarning()
         {
-            StartCoroutine(ShowNotification(GameHelperManager.HelperInstance.XpDeductNotificationtext, 3.0f));
+            StartCoroutine(ShowNotification(GameHelperManager.HelperInstance.XpDeductNotificationtext, 2.0f));
+        }
+        void ShowFailedPannel()
+        {
+            UIPanels[3].SetActive(true);
+        }
+        void ShowCompletedPannel()
+        {
+            UIPanels[4].SetActive(true);
+        }
+        void GoCompleted()
+        {
+            gameState = GameState.Scccess; 
+            UpdateGameState();
+        }
+        public void GoFailed()
+        {
+            gameState = GameState.Failed;
+            UpdateGameState();
+        }
+        
+        public void NewGame()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
        
@@ -208,7 +258,7 @@ namespace LazyTurtle
         {
             gameState = GameManager.GameState.DoorSpawn;
             UpdateGameState();
-            Debug.Log("InvokeDoorSpawning");
+           // Debug.Log("InvokeDoorSpawning");
         }
 
 
@@ -253,6 +303,7 @@ namespace LazyTurtle
             //= ' '.ToString();
             //GameHelperManager.HelperInstance.Answer2Text.text
             //= ' '.ToString();
+
             GameHelperManager.HelperInstance.QuestionsUi.SetActive(false);
         }
 

@@ -33,37 +33,44 @@ namespace LazyTurtle
         private void Update()
         {
             
-            Debug.Log("GameState is : " + GameManager.GMInstance.gameState);
-            if (!GameHelperManager.HelperInstance.GameStoped && isGrounded)  {
-               
-                   // Debug.Log("Grounded is Running: " );
+           // Debug.Log("GameState is : " + GameManager.GMInstance.gameState);
+            if (!GameHelperManager.HelperInstance.GameStoped && isGrounded)
+            {
 
-                    float horizontalInput = Input.GetAxis("Horizontal");
-                    float verticalInput = Input.GetAxis("Vertical");
+                // Debug.Log("Grounded is Running: " );
 
-                    Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput) * moveSpeed;
-                    _rigidbody.velocity = new Vector3(movement.x, _rigidbody.velocity.y, movement.z);
+                float horizontalInput = Input.GetAxis("Horizontal");
+                float verticalInput = Input.GetAxis("Vertical");
+
+                Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput) * moveSpeed;
+                _rigidbody.velocity = new Vector3(movement.x, _rigidbody.velocity.y, movement.z);
 
 
                 //transform.LookAt(movement);
 
-                    if (Input.GetButtonDown("Jump"))
-                    {
-                        Jump();
-                        PlayerAnim.SetTrigger("Jump");
-                    }
-                    if (verticalInput > 0)
-                    {
-                      PlayerAnim.SetTrigger("Run");
-                    }
-                    else
-                    {
-                     PlayerAnim.SetTrigger("Walk");
-                    }
-                  
-                    transform.Translate(Vector3.forward * Time.deltaTime * _speed);
-                
+                if (Input.GetButtonDown("Jump"))
+                {
+                    Jump();
+                    PlayerAnim.SetTrigger("Jump");
+                }
+                if (verticalInput > 0)
+                {
+                    PlayerAnim.SetTrigger("Run");
+                }
+                else
+                {
+                    PlayerAnim.SetTrigger("Walk");
+                }
+
+                transform.Translate(Vector3.forward * Time.deltaTime * _speed);
+
             }
+            else
+            {
+                PlayerAnim.SetTrigger("Idle");
+            }
+
+           
         }
 
         private void FixedUpdate()

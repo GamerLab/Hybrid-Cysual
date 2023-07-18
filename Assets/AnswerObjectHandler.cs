@@ -11,6 +11,8 @@ namespace LazyTurtle
     {
         [SerializeField] public bool TrueAnswerObject;
         [SerializeField] public TextMeshProUGUI AnswerText;
+        [SerializeField] public GameObject ParticleHit;
+
 
         // Start is called before the first frame update
         //void Start()
@@ -49,17 +51,18 @@ namespace LazyTurtle
             {
 
 
-                Debug.Log("AnswerText.text :" +this.gameObject.GetComponent<AnswerObjectHandler>().AnswerText.text);
-                Debug.Log("TrueAnswer.text :" + GameHelperManager.HelperInstance.questionAnswersList[GameHelperManager.HelperInstance.ActiveQuestionCount].TrueAnswer);
+               // Debug.Log("AnswerText.text :" +this.gameObject.GetComponent<AnswerObjectHandler>().AnswerText.text);
+             //   Debug.Log("TrueAnswer.text :" + GameHelperManager.HelperInstance.questionAnswersList[GameHelperManager.HelperInstance.ActiveQuestionCount].TrueAnswer);
                 if (this.gameObject.GetComponent<AnswerObjectHandler>().AnswerText.text ==
                         GameHelperManager.HelperInstance.questionAnswersList[GameHelperManager.HelperInstance.ActiveQuestionCount].TrueAnswer)
                 {
-                    Debug.Log("TruthAnswer");
+                 //   Debug.Log("TruthAnswer");
+                    ParticleHit.SetActive(true);
                     GameManager.GMInstance.DisableQuestion();
 
                     GameHelperManager.HelperInstance.XpSlider.GetComponent<Slider>().value += 0.5f;
 
-                    GameManager.GMInstance.StartCoroutine(GameManager.GMInstance.ShowNotification(GameHelperManager.HelperInstance.AnswerTrueNotificationtext, 1.5f));
+                    GameManager.GMInstance.StartCoroutine(GameManager.GMInstance.ShowNotification(GameHelperManager.HelperInstance.AnswerTrueNotificationtext, 1f));
 
                     if (GameHelperManager.HelperInstance.dummyCount == GameManager.GMInstance.CurrentLevel)
                     {
@@ -76,20 +79,21 @@ namespace LazyTurtle
 
                     foreach (GameObject item in ObstaclePopulator.PoolerInst.TrueFalseObjects)
                     {
-                        GameHelperManager.HelperInstance.ActiveTureFalseObjCount--;
-                        item.SetActive(false);
-                        item.transform.parent = null;
-
+                        item.GetComponent<AnswerObjectHandler>().ParticleHit.SetActive(true);
+                    
                     }
+                    Invoke("DisableObject", 2.0f);
                 }
                 else if (this.gameObject.GetComponent<AnswerObjectHandler>().AnswerText.text !=
                         GameHelperManager.HelperInstance.questionAnswersList[GameHelperManager.HelperInstance.ActiveQuestionCount].TrueAnswer)
                 {
-                    Debug.Log("FalseAnswer");
+                  //  Debug.Log("FalseAnswer");
+                    ParticleHit.SetActive(true);
+
                     GameManager.GMInstance.DisableQuestion();
                     GameHelperManager.HelperInstance.XpSlider.GetComponent<Slider>().value -= 0.1f;
 
-                    GameManager.GMInstance.StartCoroutine(GameManager.GMInstance.ShowNotification(GameHelperManager.HelperInstance.AnswerFalseNotificationtext, 1.5f));
+                    GameManager.GMInstance.StartCoroutine(GameManager.GMInstance.ShowNotification(GameHelperManager.HelperInstance.AnswerFalseNotificationtext, 1f));
 
                     if (GameHelperManager.HelperInstance.dummyCount == GameManager.GMInstance.CurrentLevel)
                     {
@@ -106,15 +110,32 @@ namespace LazyTurtle
 
                     foreach (GameObject item in ObstaclePopulator.PoolerInst.TrueFalseObjects)
                     {
-                        GameHelperManager.HelperInstance.ActiveTureFalseObjCount--;
-                        item.SetActive(false);
-                        item.transform.parent = null;
+                        item.GetComponent<AnswerObjectHandler>().ParticleHit.SetActive(true);
+                       
                     }
+                    Invoke("DisableObject", 1.0f);
                 }
 
 
 
             }
+        }
+
+        public void DisableObject()
+        {
+            foreach (GameObject item in ObstaclePopulator.PoolerInst.TrueFalseObjects)
+            {
+         
+                GameHelperManager.HelperInstance.ActiveTureFalseObjCount--;
+                item.SetActive(false);
+                item.transform.parent = null;
+
+            }
+        }
+
+        private void OnDisable()
+        {
+            ParticleHit.SetActive(false);
         }
     }
 }

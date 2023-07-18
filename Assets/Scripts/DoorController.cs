@@ -11,16 +11,21 @@ namespace LazyTurtle
     {
         [SerializeField] public bool TruthDoor;
         [SerializeField] public GameObject particleColl;
+        [SerializeField] public GameObject Door;
+
         [SerializeField] public Animator DoorAnim;
 
-
+        private void OnEnable()
+        {
+            Door.SetActive(true);
+        }
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("Player"))
             {
                 if (this.TruthDoor)
                 {
-                    Debug.Log("Collided with Truth");
+                  //  Debug.Log("Collided with Truth");
                     particleColl.SetActive(true);
                     DoorAnim.SetTrigger("goIn");
                     GameManager.GMInstance.gameState = GameState.TruthDoor;
@@ -30,7 +35,7 @@ namespace LazyTurtle
                 }
                 else
                 {
-                    Debug.Log("Collided with False");
+                  //  Debug.Log("Collided with False");
                     particleColl.SetActive(true);
                     DoorAnim.SetTrigger("goIn");
                     GameManager.GMInstance.gameState = GameState.DareDoor;
@@ -50,6 +55,7 @@ namespace LazyTurtle
         {
             yield return new WaitForSeconds(0.5f);
             particleColl.SetActive(false);
+            Door.SetActive(false);
             foreach (var item in ObstaclePopulator.PoolerInst.Doors)
             {
                 GameHelperManager.HelperInstance.ActiveDoorCount--;

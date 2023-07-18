@@ -126,7 +126,7 @@ public class ObstaclePopulator : MonoBehaviour
     }
     void doorObjectPool()
     {
-        if (GameHelperManager.HelperInstance.ActiveGroundCount >= 3 && GameHelperManager.HelperInstance.ActiveDoorCount <= 2)
+        if (GameHelperManager.HelperInstance.ActiveGroundCount >= 2 && GameHelperManager.HelperInstance.ActiveDoorCount <= 2)
         {
             Vector3 lastPos = new Vector3(0f, 0f, 0f);
             foreach (GameObject item in Doors)
@@ -164,7 +164,7 @@ public class ObstaclePopulator : MonoBehaviour
     void TrueFalseObject()
     {
        
-        if (GameHelperManager.HelperInstance.ActiveGroundCount >= 2 && GameHelperManager.HelperInstance.ActiveTureFalseObjCount <= 2)
+        if (GameHelperManager.HelperInstance.ActiveGroundCount >= 1 && GameHelperManager.HelperInstance.ActiveTureFalseObjCount <= 2)
         {
             Vector3 lastPos = new Vector3(0f, 0f, 0f);
             foreach (GameObject item in TrueFalseObjects)

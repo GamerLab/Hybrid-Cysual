@@ -60,20 +60,24 @@
     <Compile Include="Assets/Assets from internet/SimpleTurret/Scripts/Turret/TurretRotation.cs" />
     <Compile Include="Assets/Assets from internet/Particle System Color Changer/Scripts/PS_ColorChangerEditor.cs" />
     <Compile Include="Assets/Assets from internet/Particle Ribbon by Moonflower Carnivore/Scripts/rotation.cs" />
+    <Compile Include="Assets/Assets from internet/Dare Objects/AurynSky/Gems Ultimate Pack/Scripts/AnimationScript.cs" />
     <Compile Include="Assets/Assets from internet/SimpleTurret/Scripts/Turret/AudioHandler.cs" />
     <Compile Include="Assets/Scripts/GameHelperManager.cs" />
     <Compile Include="Assets/Assets from internet/SimpleTurret/Scripts/AutoDestruct.cs" />
     <Compile Include="Assets/Assets from internet/SimpleTurret/Scripts/Turret/RaycastHandler.cs" />
     <Compile Include="Assets/Assets from internet/SimpleTurret/Scripts/Health.cs" />
     <Compile Include="Assets/Scripts/GameManager.cs" />
+    <Compile Include="Assets/Scripts/Questions.cs" />
     <Compile Include="Assets/Scripts/MovingGround.cs" />
     <Compile Include="Assets/Scripts/PlayerMovement.cs" />
     <Compile Include="Assets/Scripts/updateLine.cs" />
     <Compile Include="Assets/Scripts/PlatformSpawner.cs" />
+    <Compile Include="Assets/AnswerObjectHandler.cs" />
     <Compile Include="Assets/Scripts/ObstaclePopulator.cs" />
     <Compile Include="Assets/Assets from internet/Particle System Color Changer/Example/Scripts/PS_ExampleRandomColorChange.cs" />
     <Compile Include="Assets/Scripts/GroundHolder.cs" />
     <Compile Include="Assets/Assets from internet/Particle Ribbon by Moonflower Carnivore/Scripts/randomParticleRotation.cs" />
+    <Compile Include="Assets/LevelEndPreSuccess.cs" />
     <Compile Include="Assets/Scripts/DoorController.cs" />
     <Compile Include="Assets/Scripts/PlatformDespawner.cs" />
     <Compile Include="Assets/Assets from internet/Particle System Color Changer/Scripts/PS_ColorChanger.cs" />
@@ -81,34 +85,74 @@
     <Compile Include="Assets/Assets from internet/SimpleTurret/Scripts/Turret/TurretController.cs" />
     <Compile Include="Assets/Scripts/InfiniteGroundSpawner.cs" />
     <Compile Include="Assets/Assets from internet/SimpleTurret/Scripts/Turret/TurretHealth.cs" />
-    <Compile Include="Assets/Scripts/Questions.cs" />
-    <Compile Include="Assets/AnswerObjectHandler.cs" />
+    <Compile Include="Assets/Assets from internet/JMO Assets/Cartoon FX (legacy)/Scripts/CFX_AutoRotate.cs" />
+    <Compile Include="Assets/Assets from internet/JMO Assets/Cartoon FX (legacy)/Demo/Assets/CFX_Demo_New.cs" />
+    <Compile Include="Assets/Assets from internet/JMO Assets/Cartoon FX (legacy)/Demo/Assets/CFX_AutoStopLoopedEffect.cs" />
+    <Compile Include="Assets/Assets from internet/JMO Assets/Cartoon FX (legacy)/Demo/Assets/CFX_Demo_RotateCamera.cs" />
+    <Compile Include="Assets/Assets from internet/JMO Assets/Cartoon FX (legacy)/Demo/Assets/CFX_Demo_RandomDir.cs" />
+    <Compile Include="Assets/Assets from internet/JMO Assets/Cartoon FX (legacy)/Scripts/CFX_LightIntensityFade.cs" />
+    <Compile Include="Assets/Assets from internet/JMO Assets/Cartoon FX (legacy)/Demo/Assets/CFX_Demo_Translate.cs" />
+    <Compile Include="Assets/Assets from internet/JMO Assets/Cartoon FX (legacy)/Demo/Assets/CFX_Demo_RandomDirectionTranslate.cs" />
+    <Compile Include="Assets/Assets from internet/JMO Assets/Cartoon FX (legacy)/Scripts/CFX_LightFlicker.cs" />
+    <Compile Include="Assets/Assets from internet/JMO Assets/Cartoon FX (legacy)/Scripts/CFX_AutoDestructShuriken.cs" />
+    <Compile Include="Assets/Assets from internet/VolumetricLines/BuiltInRenderPipeline/ExampleScenes/ExampleScripts/CannonBehavior.cs" />
+    <Compile Include="Assets/Assets from internet/VolumetricLines/BuiltInRenderPipeline/ExampleScenes/ExampleScripts/ShotBehavior.cs" />
+    <Compile Include="Assets/Assets from internet/VolumetricLines/BuiltInRenderPipeline/ExampleScenes/ExampleScripts/VolumetricMultiLineBehavior.cs" />
+    <Compile Include="Assets/Assets from internet/VolumetricLines/Scripts/VolumetricLineBehavior.cs" />
+    <Compile Include="Assets/Assets from internet/VolumetricLines/Scripts/VolumetricLineStripBehavior.cs" />
+    <Compile Include="Assets/Assets from internet/VolumetricLines/Scripts/VolumetricLineVertexData.cs" />
+    <Compile Include="Assets/Assets from internet/VolumetricLines/BuiltInRenderPipeline/ExampleScenes/ExampleScripts/CreateSinShapedLineStrip.cs" />
+    <Compile Include="Assets/enableObjectHandler.cs" />
+    <Compile Include="Assets/DeathScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets/Assets from internet/JMO Assets/Cartoon FX (legacy)/Shaders/CFX3 Multiply Color.shader" />
+    <None Include="Assets/Assets from internet/VolumetricLines/BuiltInRenderPipeline/Shaders/_LineStripShader.cginc" />
+    <None Include="Assets/Assets from internet/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR Particle Glow.shader" />
+    <None Include="Assets/Assets from internet/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR Particle Ubershader.shader" />
     <None Include="Assets/Assets from internet/Particle Ribbon by Moonflower Carnivore/readme_Simple_Particle_Ribbon.txt" />
+    <None Include="Assets/Assets from internet/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR_SETTINGS.cginc" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />
+    <None Include="Assets/Assets from internet/JMO Assets/Cartoon FX (legacy)/CartoonFX Free.txt" />
+    <None Include="Assets/Assets from internet/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR.cginc" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader" />
+    <None Include="Assets/Assets from internet/Dare Objects/AurynSky/Gems Ultimate Pack/READ ME.txt" />
     <None Include="Assets/Assets from internet/Particle Ribbon by Moonflower Carnivore/Shaders/Particle Alpha Blend HDR.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets/Assets from internet/VolumetricLines/BuiltInRenderPipeline/Shaders/LineStrip-TextureAlphaBlended.shader" />
+    <None Include="Assets/Assets from internet/VolumetricLines/BuiltInRenderPipeline/Shaders/SingleLine-TextureAdditive.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" />
     <None Include="Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets/Assets from internet/JMO Assets/Cartoon FX Remaster/Readme Cartoon FX Remaster FREE.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF.shader" />
     <None Include="Assets/Assets from internet/Free Stylized Skybox/ReadMe.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" />
+    <None Include="Assets/Assets from internet/VolumetricLines/BuiltInRenderPipeline/Shaders/_SingleLineShader.cginc" />
+    <None Include="Assets/Assets from internet/VolumetricLines/BuiltInRenderPipeline/Shaders/LineStrip-TextureAdditive.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" />
+    <None Include="Assets/Assets from internet/JMO Assets/Cartoon FX Remaster/CFXR Prefabs/Texts/_Make your own text effect.txt" />
+    <None Include="Assets/Assets from internet/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR_PASSES.cginc" />
     <None Include="Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" />
     <None Include="Assets/Assets from internet/SimpleTurret/Models/Turret/Shaders/AlphaTest_Complete.shader" />
+    <None Include="Assets/Assets from internet/VolumetricLines/BuiltInRenderPipeline/Shaders/SingleLine-TextureAlphaBlended.shader" />
+    <None Include="Assets/Assets from internet/Dare Objects/Snowconesolid Assets/Super Rubber Duck Pack/Snowconesolid Assets ReadMe.txt" />
+    <None Include="Assets/Assets from internet/VolumetricLines/BuiltInRenderPipeline/Shaders/LineStrip-LightSaber.shader" />
+    <None Include="Assets/Assets from internet/JMO Assets/Cartoon FX (legacy)/Shaders/CFXM_MobileParticleAdd_Alpha8.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets/Assets from internet/VolumetricLines/BuiltInRenderPipeline/Shaders/SingleLine-LightSaber.shader" />
+    <None Include="Assets/Assets from internet/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR Particle Procedural Ring.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets/Assets from internet/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR_URP.cginc" />
     <None Include="Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" />
+    <None Include="Assets/Assets from internet/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR Particle Distortion.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
@@ -798,6 +842,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="CFXRRuntime.csproj">
+      <Project>{36F5D40D-FB3D-A278-945E-8033FE5D5AAA}</Project>
+      <Name>CFXRRuntime</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXREditor.csproj">
+      <Project>{1EAB9223-2EF2-0C7E-8AD5-A565C1433B4C}</Project>
+      <Name>CFXREditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="ToonyColorsPro.Demo.Editor.csproj">
+      <Project>{C00D443C-8C42-69C1-337D-9EAD5251A63F}</Project>
+      <Name>ToonyColorsPro.Demo.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXRDemo.csproj">
+      <Project>{E8A2CED6-B3E8-5171-DD98-0D4917FB4AB6}</Project>
+      <Name>CFXRDemo</Name>
+    </ProjectReference>
+    <ProjectReference Include="KinoBloom.Runtime.csproj">
+      <Project>{66A9649B-5EFC-09E8-8141-0515858FA359}</Project>
+      <Name>KinoBloom.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXR.WelcomeScreen.csproj">
+      <Project>{CC3A3290-B6CF-5B4D-0903-CEEA8F56CA6C}</Project>
+      <Name>CFXR.WelcomeScreen</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -24,9 +24,14 @@ namespace LazyTurtle
         public static GameHelperManager HelperInstance;
 
         [Header("Public Data References")]
-     
-        [SerializeField] public GameObject CurrentGround;
+        [SerializeField] public Camera DeathCam;
+        [SerializeField] public Camera MainCam;
         [SerializeField] public Transform PlayerRef;
+        [SerializeField] public GameObject deathParticle;
+        [SerializeField] public GameObject deathScene;
+
+
+        [SerializeField] public GameObject CurrentGround;
         [SerializeField] public float NewPositionZofSpawn;
         [SerializeField] public bool GameStoped = true;
         [SerializeField] public int ActiveGroundCount = 0;
@@ -63,6 +68,10 @@ namespace LazyTurtle
         [SerializeField] public String AnswerTrueNotificationtext = "Amazing Its Wright Answer !";
         [SerializeField] public String AnswerFalseNotificationtext = "Oops The Right Answer is : !";
 
+        [Space(10)]
+        [Header("Complete")]
+       
+        [SerializeField] public GameObject CompeteCelibration;
 
 
 
@@ -103,16 +112,16 @@ namespace LazyTurtle
                     GameStoped = false;
                     break;
                 case 6://PreSuccess
-                    GameStoped = false;
+                    GameStoped = true;
                     break;
                 case 7://PreFail
-                    GameStoped = false;
+                    GameStoped = true;
                     break;
                 case 8://Failed
-                    GameStoped = false;
+                    GameStoped = true;
                     break;
                 case 9://Scccess
-                    GameStoped = false;
+                    GameStoped = true;
                     break;
                 case 10://StopToPlay
                     GameStoped = true;
