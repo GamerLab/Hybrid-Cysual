@@ -15,7 +15,10 @@ namespace LazyTurtle
 
         public enum GameState { Objective, GameStart, GamePause, DoorSpawn, TruthDoor, DareDoor, PreSuccess, PreFail, Failed, Scccess, GameStopToPlay };
         public  GameState gameState;
-      
+
+        public enum DCollectObjects { gems, food, duck , hurdle };
+        public DCollectObjects dareObjCollect;
+
 
         [Space(20)]
         [Header("UIPanels")]
@@ -41,6 +44,7 @@ namespace LazyTurtle
             CurrentLevel =UnityEngine.Random.Range(4, 10);
 
             //PlayerPrefs.SetInt("gameState", (int)gameState);
+            //dareObjCollect = DCollectObjects.gems;
             UpdateGameState();
             
         }
@@ -86,7 +90,20 @@ namespace LazyTurtle
                     {
                         GameHelperManager.HelperInstance.XpSlider.GetComponent<Slider>().value -= 0.01f * Time.deltaTime;
                     }
-                    break;
+
+                    if (GameHelperManager.HelperInstance.DareObjectsCollected  >= GameHelperManager.HelperInstance.DareObjectsToCollect)
+                    {
+                        foreach (GameObject _ground in ObstaclePopulator.PoolerInst.activeGrounds)
+                        {
+                            foreach (Transform item in _ground.GetComponent<GroundHolder>().DareItems)
+                            {
+                                item.gameObject.SetActive(false);
+                            }
+                        }
+                        gameState = GameState.PreSuccess;
+                        UpdateGameState();
+                    }
+                        break;
                 case 6://PreSuccess
                     break;
                 case 7://PreFail
@@ -138,8 +155,8 @@ namespace LazyTurtle
                     ObstaclePopulator.PoolerInst.SpawnTrueFalseObjectNow();
                     break;
                 case 5://DareDoor
-                    GameManager.GMInstance.gameState = GameState.DoorSpawn;
-                    GameManager.GMInstance.UpdateGameState();
+                    ShowDare();
+                    ObstaclePopulator.PoolerInst.PoolhurdleWithDelay();
                     break;
                 case 6://PreSuccess
                     foreach (var item in UIPanels)
@@ -157,12 +174,21 @@ namespace LazyTurtle
                     GameHelperManager.HelperInstance.deathScene.SetActive(true);
                     break;
                 case 8://Failed
+                    foreach (var item in UIPanels)
+                    {
+                        item.SetActive(false);
+                    }
                     ShowFailedPannel();
                     break;
                 case 9://Scccess
+                    foreach (var item in UIPanels)
+                    {
+                        item.SetActive(false);
+                    }
                     ShowCompletedPannel();
                     break;
                 case 10://StopToPlay
+                 
                     StartCoroutine(startNoCounter());
                     break;
 
@@ -310,7 +336,86 @@ namespace LazyTurtle
 
         #endregion
 
+        #region Dare Calling
+
+        public void ShowDare()
+        {
+
+            // Random Selecting Dare Task
+            int randomizedDare = UnityEngine.Random.Range(0, 2);
+            dareObjCollect = (DCollectObjects)randomizedDare;
+
+            int randomizedTarget = UnityEngine.Random.Range(5, 10);
+            GameHelperManager.HelperInstance.DareObjectsToCollect = randomizedTarget;
+
+            GameHelperManager.HelperInstance.DareInfoText.text
+                = GameHelperManager.HelperInstance.DareInfo[(int)dareObjCollect];
+            GameHelperManager.HelperInstance.DareTargetText.text
+                = GameHelperManager.HelperInstance.DareObjectsToCollect.ToString();
+            GameHelperManager.HelperInstance.DareTragetAchivedText.text
+                = GameHelperManager.HelperInstance.DareObjectsCollected.ToString();
+            GameHelperManager.HelperInstance.DareUi.SetActive(true);
+
+        }
+
+        public void CheckCollectedTarget(GameObject target)
+        {
+            switch((int)dareObjCollect)
+            {
+                case 0:
+                    if (target.CompareTag("gems"))
+                    {
+                        GameHelperManager.HelperInstance.XpSlider.GetComponent<Slider>().value += 0.1f;
+                        StartCoroutine(ShowNotification(GameHelperManager.HelperInstance.ObjectCollectedGem, 1f));
+                        GameHelperManager.HelperInstance.DareObjectsCollected++;
+                        GameHelperManager.HelperInstance.DareTragetAchivedText.text =
+                        GameHelperManager.HelperInstance.DareObjectsCollected.ToString();
+                    }
+                    else
+                    {
+                        GameHelperManager.HelperInstance.XpSlider.GetComponent<Slider>().value -= 0.1f;
+                        StartCoroutine(ShowNotification(GameHelperManager.HelperInstance.FalseObjectCollected, 1f));
+                    }
+                    break;
+                case 1:
+                    if (target.CompareTag("food"))
+                    {
+                        GameHelperManager.HelperInstance.XpSlider.GetComponent<Slider>().value += 0.1f;
+                        StartCoroutine(ShowNotification(GameHelperManager.HelperInstance.ObjectCollectedGem, 1f));
+                        GameHelperManager.HelperInstance.DareObjectsCollected++;
+                        GameHelperManager.HelperInstance.DareTragetAchivedText.text =
+                        GameHelperManager.HelperInstance.DareObjectsCollected.ToString();
+                    }
+                    else
+                    {
+                        GameHelperManager.HelperInstance.XpSlider.GetComponent<Slider>().value -= 0.1f;
+                        StartCoroutine(ShowNotification(GameHelperManager.HelperInstance.FalseObjectCollected, 1f));                  
+                    }
+                    break;
+                case 2:
+                    if (target.CompareTag("duck"))
+                    {
+                        GameHelperManager.HelperInstance.XpSlider.GetComponent<Slider>().value += 0.1f;
+                        StartCoroutine(ShowNotification(GameHelperManager.HelperInstance.ObjectCollectedGem, 1f));
+                        GameHelperManager.HelperInstance.DareObjectsCollected++;
+                        GameHelperManager.HelperInstance.DareTragetAchivedText.text =
+                      GameHelperManager.HelperInstance.DareObjectsCollected.ToString();
+                    }
+                    else
+                    {
+                        GameHelperManager.HelperInstance.XpSlider.GetComponent<Slider>().value -= 0.1f;
+                        StartCoroutine(ShowNotification(GameHelperManager.HelperInstance.FalseObjectCollected, 1f));        
+                    }
+                    break;
+                case 3:
+                  // never allow hurdle to dare will be=>   dare <= 2
+                    break;
+            }
+        }
      
+
+        #endregion
+
     }
 }
 

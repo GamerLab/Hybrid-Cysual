@@ -65,8 +65,24 @@ namespace LazyTurtle
         [SerializeField] public TextMeshProUGUI QuestionText;
         [SerializeField] public TextMeshProUGUI Answer1Text;
         [SerializeField] public TextMeshProUGUI Answer2Text;
-        [SerializeField] public String AnswerTrueNotificationtext = "Amazing Its Wright Answer !";
+        [SerializeField] public String AnswerTrueNotificationtext = "Amazing Its Rite Answer !";
         [SerializeField] public String AnswerFalseNotificationtext = "Oops The Right Answer is : !";
+
+
+        [Space(10)]
+        [Header("Dare Things Ui")]
+        [SerializeField] public List<String> DareInfo = new List<String>();
+        [SerializeField] public GameObject DareUi;
+        [SerializeField] public TextMeshProUGUI DareInfoText;
+        [SerializeField] public TextMeshProUGUI DareTargetText;
+        [SerializeField] public TextMeshProUGUI DareTragetAchivedText;
+        [SerializeField] public int DareObjectsCollected = 0;
+        [SerializeField] public int DareObjectsToCollect = 0;
+
+        [SerializeField] public String ObjectCollectedGem = "Gem Collected";
+        [SerializeField] public String FalseObjectCollected = "Oops Collect Other Objects!";
+
+
 
         [Space(10)]
         [Header("Complete")]

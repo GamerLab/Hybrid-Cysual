@@ -1,7 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Progress;
+
 
 namespace LazyTurtle
 {
@@ -21,7 +21,7 @@ namespace LazyTurtle
         public IEnumerator DoDisable()
         {
             yield return new WaitForSeconds(1.0f);
-            Debug.Log("DisablingGround ");
+           // Debug.Log("DisablingGround ");
             GameHelperManager.HelperInstance.ActiveGroundCount--;
             this.gameObject.transform.parent.gameObject.SetActive(false);
         }
